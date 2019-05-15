@@ -4,12 +4,12 @@ import Table from './containers/Table';
 
 // Endpoint!
 const API = "http://localhost:3000/sushis"
+let SUSHIS = []
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      sushis: [],
       wallet: 100,
       sushisEaten: [],
       sushiIndex: 0,
@@ -23,12 +23,11 @@ class App extends Component {
     fetch(API)
     .then(res => res.json())
     .then(sushis => {
+      SUSHIS = sushis
       this.setState({
-        sushis: sushis,
         currentSushis: sushis.slice(this.state.sushiIndex, this.state.sushiIndex+4)
       })
     })
-    .then(res => console.log(this.state.currentSushis))
   }
 
   isSushiEaten = (sushi) => {
@@ -55,7 +54,7 @@ class App extends Component {
     const nextIndex = this.state.sushiIndex+4
     this.setState({
       sushiIndex: nextIndex,
-      currentSushis: this.state.sushis.slice(nextIndex, nextIndex+4)
+      currentSushis: SUSHIS.slice(nextIndex, nextIndex+4)
     })
   }
 
