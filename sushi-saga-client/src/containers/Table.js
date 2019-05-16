@@ -1,10 +1,11 @@
 import React, { Fragment } from 'react'
+import WalletForm from '../components/WalletForm'
 
 const Table = (props) => {
 
   const renderPlates = (array) => {
     return array.map((x, index) => {
-      return <div className="empty-plate" style={{ top: -7 * index }}/>
+      return <div key={index} className="empty-plate" style={{ top: -7 * index }}/>
     })
   }
   return (
@@ -18,6 +19,7 @@ const Table = (props) => {
             renderPlates(props.sushisEaten)
           }
         </div>
+        <WalletForm addToWallet={props.addToWallet}/>
       </div>
     </Fragment>
   )

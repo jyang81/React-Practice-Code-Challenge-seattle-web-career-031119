@@ -51,10 +51,19 @@ class App extends Component {
   }
 
   moreSushi = () => {
-    const nextIndex = this.state.sushiIndex+4
+    let nextIndex = this.state.sushiIndex+4
+    if (nextIndex >= SUSHIS.length) {
+      nextIndex -= SUSHIS.length
+    }
     this.setState({
       sushiIndex: nextIndex,
       currentSushis: SUSHIS.slice(nextIndex, nextIndex+4)
+    })
+  }
+
+  addToWallet = (amount) => {
+    this.setState({
+      wallet: this.state.wallet+amount
     })
   }
 
@@ -67,7 +76,11 @@ class App extends Component {
           isSushiEaten={this.isSushiEaten}
           moreSushi={this.moreSushi}
         />
-        <Table wallet={this.state.wallet} sushisEaten={this.state.sushisEaten}/>
+        <Table
+          wallet={this.state.wallet}
+          sushisEaten={this.state.sushisEaten}
+          addToWallet={this.addToWallet}
+        />
       </div>
     );
   }
