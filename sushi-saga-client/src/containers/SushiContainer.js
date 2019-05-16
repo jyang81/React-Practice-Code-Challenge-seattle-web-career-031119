@@ -11,7 +11,7 @@ const SushiContainer = (props) => {
             return <Sushi
               key={idx}
               sushi={sushi}
-              eatSushi={(sushi) => props.eatSushi(sushi)}
+              eatSushi={props.eatSushi}
               isSushiEaten={props.isSushiEaten}
             />
           })

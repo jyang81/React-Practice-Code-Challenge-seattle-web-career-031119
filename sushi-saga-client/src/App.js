@@ -63,7 +63,7 @@ class App extends Component {
       <div className="app">
         <SushiContainer
           currentSushis={this.state.currentSushis}
-          eatSushi={(sushi) => this.eatSushi(sushi)}
+          eatSushi={this.eatSushi}
           isSushiEaten={this.isSushiEaten}
           moreSushi={this.moreSushi}
         />
